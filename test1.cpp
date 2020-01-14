@@ -2,10 +2,11 @@
 #include <iostream>
 
 
-using namespace std;
+//using namespace std;
 
+//ostream overload
 class NodeTest1 {
-  friend ostream &operator<<(ostream &Out, const NodeTest1 &N) {
+  friend std::ostream &operator<<(std::ostream &Out, const NodeTest1 &N) {
     Out << "N<" << N.Value << ", " << (N.Next != nullptr) << ">";
     return Out;
   }
@@ -18,12 +19,14 @@ public:
   explicit NodeTest1(int Value = 0, NodeTest1 *Next = nullptr)
       : Value{Value}, Next{Next} {
     ++NodeCount;
-    cout << "Creating " << *this << ", total created: " << NodeCount << endl;
+    std::cout << "Creating " << *this << ", total created: " << NodeCount << std::endl;
   }
+
+  //destructor
   ~NodeTest1() {
-    cout << "Deleting: " << *this;
+    std::cout << "Deleting: " << *this;
     --NodeCount;
-    cout << ", nodes remaining: " << NodeCount << endl;
+    std::cout << ", nodes remaining: " << NodeCount << std::endl;
   }
 };
 

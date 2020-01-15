@@ -16,7 +16,8 @@ public:
 
   ~StringT3() {
     std::cout << "Deleting " << MyStrings[0] << MyStrings[1] << MyStrings[2] << std::endl;
-    delete[] MyStrings;
+    
+    //delete[] MyStrings;
   }
 };
 
@@ -27,7 +28,7 @@ void test3() {
   StringT3 U1(S1);
   U1.MyStrings[0] = "q";
 
-  auto *S2ptr = new StringT3("w", "x", "y");
+  auto *S2ptr = new StringT3("w", "x", "y"); //heap
   StringT3 *T2ptr;
   T2ptr = S2ptr;
 
@@ -36,7 +37,7 @@ void test3() {
   V1.push_back(T1);
   V1.push_back(U1);
 
-  std::vector<StringT3 *> V2;
+  std::vector<StringT3*> V2;
   V2.push_back(S2ptr);
   V2.push_back(T2ptr);
 

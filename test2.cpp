@@ -1,10 +1,10 @@
 #include <cassert>
 #include <iostream>
 
-using namespace std;
+//using namespace std;
 
 class NodeTest2 {
-  friend ostream &operator<<(ostream &Out, const NodeTest2 &N) {
+  friend std::ostream &operator<<(std::ostream &Out, const NodeTest2 &N) {
     Out << "N<" << N.Value << ", " << (N.Next != nullptr) << ">";
     return Out;
   }
@@ -17,12 +17,12 @@ public:
   explicit NodeTest2(int Value = 0, NodeTest2 *Next = nullptr)
       : Value{Value}, Next{Next} {
     ++NodeCount;
-    cout << "Creating " << *this << ", total created: " << NodeCount << endl;
+    std::cout << "Creating " << *this << ", total created: " << NodeCount << std::endl;
   }
   ~NodeTest2() {
-    cout << "Deleting: " << *this;
+    std::cout << "Deleting: " << *this;
     --NodeCount;
-    cout << ", nodes remaining: " << NodeCount << endl;
+    std::cout << ", nodes remaining: " << NodeCount << std::endl;
   }
 };
 
@@ -69,16 +69,16 @@ NodeTest2 *remove(NodeTest2 *Start, NodeTest2 *N) {
 }
 
 void displayAll(NodeTest2 *N) {
-  cout << "[";
+  std::cout << "[";
   if (N != nullptr) {
-    cout << *N;
+    std::cout << *N;
     N = N->Next;
   }
   while (N != nullptr) {
-    cout << ", " << *N;
+    std::cout << ", " << *N;
     N = N->Next;
   }
-  cout << "]" << endl;
+  std::cout << "]" << std::endl;
 }
 
 void test2() {

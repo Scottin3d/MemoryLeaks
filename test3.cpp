@@ -16,6 +16,7 @@ public:
 
   ~StringT3() {
     std::cout << "Deleting " << MyStrings[0] << MyStrings[1] << MyStrings[2] << std::endl;
+    delete MyStrings;
   }
 };
 

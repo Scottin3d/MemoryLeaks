@@ -33,7 +33,7 @@ void test3();
 int main() {
   std::cout << "Starting memory-leaks-r-us...." << std::endl;
   test1();
-  // test2();
+  test2();
   // test3();
   std::cout << "Successfully completed memory-leaks-r-us...." << std::endl;
   //std::cin.get();

@@ -25,7 +25,7 @@ class NodeTest1 {
   //destructor
   ~NodeTest1() {
     std::cout << "Deleting: " << *this;
-    delete Next;
+    delete Next; //leak fix
     --NodeCount;
     std::cout << ", nodes remaining: " << NodeCount << std::endl;
   }
@@ -35,8 +35,8 @@ int NodeTest1::NodeCount = 0;
 
 void test1() {
   //part 1
-  NodeTest1 N1(1);
-  NodeTest1 *N1Ptr;
+  NodeTest1 N1(1); //stack
+  NodeTest1 *N1Ptr; //stack
   N1Ptr = &N1;
   assert(N1Ptr != nullptr);
 
@@ -50,8 +50,8 @@ void test1() {
     N3Arr[I] = Tmp;
   }
 
-  delete N2Ptr;
-  delete[] N3Arr;
+  delete N2Ptr; //leak fix
+  delete[] N3Arr; //leak fix
   //part 3
   auto N4Arr = new NodeTest1 *[10]; //heap - array of 10 ptrs delete[] N4Arr
   //fills N4Arr[6-9] and 0-5 nullptr
@@ -60,5 +60,5 @@ void test1() {
     N4Arr[I] = Tmp;
     delete Tmp; //leak fix
   }
-  delete[] N4Arr;
+  delete[] N4Arr; //leak fix
 }

@@ -3,8 +3,6 @@
 #include <vector>
 #include <string>
 
-//using namespace std;
-
 class StringT3 {
 public:
   std::string *MyStrings = new std::string[3];
@@ -41,5 +39,6 @@ void test3() {
   V2.push_back(S2ptr);
   V2.push_back(T2ptr);
 
+  delete S2ptr;
   std::cout << "test3 is done" << std::endl;
 }

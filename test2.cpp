@@ -21,7 +21,6 @@ public:
   }
   ~NodeTest2() {
     std::cout << "Deleting: " << *this;
-    delete Next;
     --NodeCount;
     std::cout << ", nodes remaining: " << NodeCount << std::endl;
   }
@@ -34,6 +33,7 @@ NodeTest2 *find(NodeTest2 *Start, int Value) {
   NodeTest2 *Curr = Start;
   while (Curr != nullptr && Curr->Value != Value)
     Curr = Curr->Next;
+
   return Curr;
 }
 
@@ -43,6 +43,7 @@ NodeTest2 *addAfter(NodeTest2 *A, NodeTest2 *B) {
   NodeTest2 *C = A->Next;
   A->Next = B;
   B->Next = C;
+
   return B;
 }
 
@@ -56,8 +57,10 @@ NodeTest2 *addBefore(NodeTest2 *Start, int ValA, int ValB) {
   while (Curr->Next != NodeB)
     Curr = Curr->Next;
   Curr->Next = NodeA;
+
   return Start;
 }
+
 
 NodeTest2 *remove(NodeTest2 *Start, NodeTest2 *N) {
   assert(Start != nullptr);
@@ -66,6 +69,7 @@ NodeTest2 *remove(NodeTest2 *Start, NodeTest2 *N) {
     Curr = Curr->Next;
   if (Curr != nullptr)
     Curr->Next = N->Next;
+
   return Start;
 }
 
@@ -83,12 +87,15 @@ void displayAll(NodeTest2 *N) {
 }
 
 void test2() {
+  std::cout << "part1" << std::endl;
   auto *Head = new NodeTest2(100);
   NodeTest2 *Tail = Head;
   for (int I = 1; I <= 5; ++I) {
     Tail = addAfter(Tail, new NodeTest2(I * I * I));
   }
   displayAll(Head);
+  std::cout << "part2" << std::endl;
+
   addBefore(Head, 7, 8);
   addBefore(Head, 13, 125);
   addBefore(Head, 15, 9);
@@ -96,9 +103,13 @@ void test2() {
 
   addBefore(Head, 19, 100);
   displayAll(Head);
+  std::cout << "part3" << std::endl;
+
   remove(Head, find(Head, 8));
   remove(Head, find(Head, 77));
   remove(Head, find(Head, 100));
   remove(Head, find(Head, 19));
   displayAll(Head);
+
+  delete Head;
 }

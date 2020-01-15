@@ -1,9 +1,9 @@
 #include <cassert>
 #include <iostream>
 
-//using namespace std;
-
+//node class
 class NodeTest2 {
+  //ostream overload
   friend std::ostream &operator<<(std::ostream &Out, const NodeTest2 &N) {
     Out << "N<" << N.Value << ", " << (N.Next != nullptr) << ">";
     return Out;
@@ -21,6 +21,7 @@ public:
   }
   ~NodeTest2() {
     std::cout << "Deleting: " << *this;
+    delete Next;
     --NodeCount;
     std::cout << ", nodes remaining: " << NodeCount << std::endl;
   }

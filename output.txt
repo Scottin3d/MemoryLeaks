@@ -1,0 +1,90 @@
+Starting memory-leaks-r-us....
+Creating N<1, 0>, total created: 1
+Creating N<3, 0>, total created: 2
+Creating N<0, 0>, total created: 3
+Creating N<0, 0>, total created: 4
+Creating N<0, 0>, total created: 5
+Creating N<0, 0>, total created: 6
+Creating N<0, 0>, total created: 7
+Creating N<0, 0>, total created: 8
+Creating N<0, 0>, total created: 9
+Creating N<0, 0>, total created: 10
+Creating N<0, 0>, total created: 11
+Creating N<0, 0>, total created: 12
+Creating N<0, 0>, total created: 13
+Deleting: N<0, 0>, nodes remaining: 12
+Creating N<1, 0>, total created: 13
+Deleting: N<1, 0>, nodes remaining: 12
+Creating N<4, 0>, total created: 13
+Deleting: N<4, 0>, nodes remaining: 12
+Creating N<9, 0>, total created: 13
+Deleting: N<9, 0>, nodes remaining: 12
+Creating N<16, 0>, total created: 13
+Deleting: N<16, 0>, nodes remaining: 12
+Deleting: N<3, 0>, nodes remaining: 11
+Deleting: N<0, 0>, nodes remaining: 10
+Deleting: N<0, 0>, nodes remaining: 9
+Deleting: N<0, 0>, nodes remaining: 8
+Deleting: N<0, 0>, nodes remaining: 7
+Deleting: N<0, 0>, nodes remaining: 6
+Deleting: N<16, 0>, nodes remaining: 5
+Deleting: N<9, 0>, nodes remaining: 4
+Deleting: N<4, 0>, nodes remaining: 3
+Deleting: N<1, 0>, nodes remaining: 2
+Deleting: N<0, 0>, nodes remaining: 1
+Creating N<36, 0>, total created: 2
+Deleting: N<36, 0>, nodes remaining: 1
+Creating N<49, 0>, total created: 2
+Deleting: N<49, 0>, nodes remaining: 1
+Creating N<64, 0>, total created: 2
+Deleting: N<64, 0>, nodes remaining: 1
+Creating N<81, 0>, total created: 2
+Deleting: N<81, 0>, nodes remaining: 1
+Deleting: N<1, 0>, nodes remaining: 0
+Creating N<100, 0>, total created: 1
+Creating N<1, 0>, total created: 2
+Creating N<8, 0>, total created: 3
+Creating N<27, 0>, total created: 4
+Creating N<64, 0>, total created: 5
+Creating N<125, 0>, total created: 6
+[N<100, 1>, N<1, 1>, N<8, 1>, N<27, 1>, N<64, 1>, N<125, 0>]
+Creating N<7, 0>, total created: 7
+Creating N<13, 0>, total created: 8
+Creating N<15, 0>, total created: 9
+Creating N<17, 0>, total created: 10
+Creating N<19, 0>, total created: 11
+[N<19, 1>, N<100, 1>, N<1, 1>, N<7, 1>, N<8, 1>, N<27, 1>, N<64, 1>, N<13, 1>, N<125, 1>, N<15, 1>, N<17, 0>]
+Deleting: N<8, 1>, nodes remaining: 10
+Deleting: N<100, 1>, nodes remaining: 9
+Deleting: N<19, 1>, nodes remaining: 8
+[N<1, 1>, N<7, 1>, N<27, 1>, N<64, 1>, N<13, 1>, N<125, 1>, N<15, 1>, N<17, 0>]
+Deleting: N<1, 1>, nodes remaining: 7
+Deleting: N<7, 1>, nodes remaining: 6
+Deleting: N<27, 1>, nodes remaining: 5
+Deleting: N<64, 1>, nodes remaining: 4
+Deleting: N<13, 1>, nodes remaining: 3
+Deleting: N<125, 1>, nodes remaining: 2
+Deleting: N<15, 1>, nodes remaining: 1
+Deleting: N<17, 0>, nodes remaining: 0
+All deleted
+Created abc
+Created copy abc
+Created wxy
+Created copy abc
+Created copy abc
+Created copy abc
+Deleting abc
+Created copy qbc
+Created copy abc
+Created copy abc
+Deleting abc
+Deleting abc
+Deleting wxy
+test3 is done
+Deleting abc
+Deleting abc
+Deleting qbc
+Deleting qbc
+Deleting abc
+Deleting abc
+Successfully completed memory-leaks-r-us....

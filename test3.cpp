@@ -42,7 +42,7 @@ void test3() {
   V2.push_back(T2ptr);
 
   delete S2ptr;
-  delete T2ptr;
+  //delete T2ptr;
 
   std::cout << "test3 is done" << std::endl;
 }

@@ -76,6 +76,14 @@ NodeTest2 *remove(NodeTest2 *Start, NodeTest2 *N) {
   if (Curr != nullptr) {
     Curr->Next = N->Next;
   }
+
+  if (Start == N) {
+    NodeTest2* ReturnNode = Start->Next;
+    delete Start;
+    return ReturnNode;
+
+  }
+  delete N;
   return Start;
 }
 

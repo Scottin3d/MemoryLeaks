@@ -120,4 +120,10 @@ void test2() {
   Head = remove(Head, find(Head, 100));
   Head = remove(Head, find(Head, 19));
   displayAll(Head);
+
+  while(Head != nullptr){
+    Head = remove(Head, Head);
+  }
+
+  std::cout << "All deleted" << std::endl;
 }

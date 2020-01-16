@@ -1,10 +1,10 @@
 #include <cassert>
 #include <iostream>
 
-//node class
+using namespace std;
+
 class NodeTest2 {
-  //ostream overload
-  friend std::ostream &operator<<(std::ostream &Out, const NodeTest2 &N) {
+  friend ostream &operator<<(ostream &Out, const NodeTest2 &N) {
     Out << "N<" << N.Value << ", " << (N.Next != nullptr) << ">";
     return Out;
   }
@@ -17,12 +17,12 @@ public:
   explicit NodeTest2(int Value = 0, NodeTest2 *Next = nullptr)
       : Value{Value}, Next{Next} {
     ++NodeCount;
-    std::cout << "Creating " << *this << ", total created: " << NodeCount << std::endl;
+    cout << "Creating " << *this << ", total created: " << NodeCount << endl;
   }
   ~NodeTest2() {
-    std::cout << "Deleting: " << *this;
+    cout << "Deleting: " << *this;
     --NodeCount;
-    std::cout << ", nodes remaining: " << NodeCount << std::endl;
+    cout << ", nodes remaining: " << NodeCount << endl;
   }
 };
 
@@ -33,7 +33,6 @@ NodeTest2 *find(NodeTest2 *Start, int Value) {
   NodeTest2 *Curr = Start;
   while (Curr != nullptr && Curr->Value != Value)
     Curr = Curr->Next;
-
   return Curr;
 }
 
@@ -43,7 +42,6 @@ NodeTest2 *addAfter(NodeTest2 *A, NodeTest2 *B) {
   NodeTest2 *C = A->Next;
   A->Next = B;
   B->Next = C;
-
   return B;
 }
 
@@ -54,62 +52,64 @@ NodeTest2 *addBefore(NodeTest2 *Start, int ValA, int ValB) {
   auto *NodeA = new NodeTest2(ValA);
   NodeA->Next = NodeB;
   NodeTest2 *Curr = Start;
-  while (Curr->Next != NodeB)
+  if (Curr == NodeB) {
+    NodeA->Next = NodeB;
+    return NodeA;
+  }
+  while (Curr->Next != NodeB) {
+  
     Curr = Curr->Next;
+  }
   Curr->Next = NodeA;
-
   return Start;
 }
 
-
 NodeTest2 *remove(NodeTest2 *Start, NodeTest2 *N) {
   assert(Start != nullptr);
+  if (N == nullptr) {
+    return Start;
+  }
   NodeTest2 *Curr = Start;
-  while (Curr != nullptr && Curr->Next != N)
+  while (Curr != nullptr && Curr->Next != N) {
     Curr = Curr->Next;
-  if (Curr != nullptr)
+  }
+  if (Curr != nullptr) {
     Curr->Next = N->Next;
-
+  }
   return Start;
 }
 
 void displayAll(NodeTest2 *N) {
-  std::cout << "[";
+  cout << "[";
   if (N != nullptr) {
-    std::cout << *N;
+    cout << *N;
     N = N->Next;
   }
   while (N != nullptr) {
-    std::cout << ", " << *N;
+    cout << ", " << *N;
     N = N->Next;
   }
-  std::cout << "]" << std::endl;
+  cout << "]" << endl;
 }
 
 void test2() {
-  std::cout << "part1" << std::endl;
   auto *Head = new NodeTest2(100);
   NodeTest2 *Tail = Head;
   for (int I = 1; I <= 5; ++I) {
     Tail = addAfter(Tail, new NodeTest2(I * I * I));
   }
   displayAll(Head);
-  std::cout << "part2" << std::endl;
-
-  addBefore(Head, 7, 8);
-  addBefore(Head, 13, 125);
-  addBefore(Head, 15, 9);
-  addBefore(Head, 17, 11);
-
-  addBefore(Head, 19, 100);
+  
+  Head = addBefore(Head, 7, 8);
+  Head = addBefore(Head, 13, 125);
+  Head = addBefore(Head, 15, 9);
+  Head = addBefore(Head, 17, 11);
+  Head = addBefore(Head, 19, 100);
   displayAll(Head);
-  std::cout << "part3" << std::endl;
-
-  remove(Head, find(Head, 8));
-  remove(Head, find(Head, 77));
-  remove(Head, find(Head, 100));
-  remove(Head, find(Head, 19));
+  
+  Head = remove(Head, find(Head, 8));
+  Head = remove(Head, find(Head, 77));
+  Head = remove(Head, find(Head, 100));
+  Head = remove(Head, find(Head, 19));
   displayAll(Head);
-
-  delete Head;
 }

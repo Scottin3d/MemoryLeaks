@@ -57,7 +57,6 @@ NodeTest2 *addBefore(NodeTest2 *Start, int ValA, int ValB) {
     return NodeA;
   }
   while (Curr->Next != NodeB) {
-  
     Curr = Curr->Next;
   }
   Curr->Next = NodeA;
@@ -77,13 +76,14 @@ NodeTest2 *remove(NodeTest2 *Start, NodeTest2 *N) {
     Curr->Next = N->Next;
   }
 
+  //if N equals head, return next, delete start
   if (Start == N) {
     NodeTest2* ReturnNode = Start->Next;
     delete Start;
     return ReturnNode;
 
   }
-  delete N;
+  delete N; //delete N
   return Start;
 }
 
@@ -108,6 +108,7 @@ void test2() {
   }
   displayAll(Head);
   
+  //set equal to head to track of head during updates
   Head = addBefore(Head, 7, 8);
   Head = addBefore(Head, 13, 125);
   Head = addBefore(Head, 15, 9);
@@ -121,6 +122,7 @@ void test2() {
   Head = remove(Head, find(Head, 19));
   displayAll(Head);
 
+  //cycle through to delete all node
   while(Head != nullptr){
     Head = remove(Head, Head);
   }

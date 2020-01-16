@@ -14,7 +14,7 @@ public:
     MyStrings[0] = Copy.MyStrings[0];
     MyStrings[1] = Copy.MyStrings[1];
     MyStrings[2] = Copy.MyStrings[2];
-    std::cout << "Created " << MyStrings[0] << MyStrings[1] << MyStrings[2] << std::endl;
+    std::cout << "Created copy " << MyStrings[0] << MyStrings[1] << MyStrings[2] << std::endl;
   }
 
   //default constructor
@@ -25,9 +25,9 @@ public:
     std::cout << "Created " << MyStrings[0] << MyStrings[1] << MyStrings[2] << std::endl;
   }
 
+  //destructor
   ~StringT3() {
     std::cout << "Deleting " << MyStrings[0] << MyStrings[1] << MyStrings[2] << std::endl;
-    
     delete[] MyStrings; //add
   }
 
@@ -61,7 +61,7 @@ void test3() {
   V2.push_back(S2ptr);
   V2.push_back(T2ptr);
 
-  //delete S2ptr;
+  delete S2ptr;
 
   std::cout << "test3 is done" << std::endl;
 }
